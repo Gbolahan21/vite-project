@@ -15,7 +15,8 @@ const Dashboard: React.FC = () => {
     try {
 
       await fetch("http://localhost:5000/logout", {
-        method: "POST"
+        method: "POST",
+        credentials: "include"
       });
 
       navigate("/signin", { replace: true });

@@ -15,13 +15,16 @@ function SignIn() {
   useEffect(() => {
     const autoLogin = async () => {
       try {
-        const res = await fetch("http://localhost:5000/auto-login", { credentials: "include" });
+        const res = await fetch("http://localhost:5000/auto-login", {
+          credentials: "include"
+        });
         const data = await res.json();
         if (res.ok) {
+          // Auto-login successful: redirect to dashboard
           navigate("/dashboard", { state: { username: data.username } });
         }
       } catch (err) {
-        console.log("No remembered user", err);
+        console.error(err);
       }
     };
     autoLogin();
@@ -37,6 +40,7 @@ function SignIn() {
       const response = await fetch("http://localhost:5000/signin", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "include",
         body: JSON.stringify({ ...formData, rememberMe }),
       });
 
@@ -106,9 +110,9 @@ function SignIn() {
             <span className="text-sm">Remember me</span>
           </label>
 
-          <a href="#" className="text-sm text-blue-500">
+          <Link to="/forget" className="text-sm text-blue-500">
             Forgot password?
-          </a>
+          </Link>
         </div>
 
         <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 cursor-pointer">Log In</button>

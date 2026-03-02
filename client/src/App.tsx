@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Signup from "./pages/SignUp";
 import Signin from "./pages/SignIn";
 import Dashboard from "./pages/Dashboard";
+import Forget from "./pages/Forget";
 
 const App: React.FC = () => {
   return (
@@ -12,6 +13,7 @@ const App: React.FC = () => {
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/signin" element={<Signin />} />
+        <Route path="/forget" element={<Forget />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
