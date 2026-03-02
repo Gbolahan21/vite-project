@@ -18,7 +18,7 @@ const Dashboard: React.FC = () => {
         method: "POST"
       });
 
-      navigate("/", { replace: true });
+      navigate("/signin", { replace: true });
 
     } catch (error) {
 
